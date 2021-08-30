@@ -13,13 +13,13 @@ function pickUpOrder(payload) {
        orderID: ${payload.Address.zipcode},
        customer: ${payload.customer},
        address: ${payload.Address.city + payload.Address.state}`);
-  setTimeout(() => {
+  // setTimeout(() => {
     event.emit("in-transit", payload);
-  }, 1000);
-  setTimeout(() => {
+  // }, 1000);
+  // setTimeout(() => {
     console.log(`DRIVER: delivered up ${payload.Address.zipcode}`);
     event.emit("delivered", payload);
-  }, 3000);
+  // }, 3000);
 }
 
 module.exports = { pickUpOrder };

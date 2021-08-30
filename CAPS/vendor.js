@@ -17,7 +17,7 @@ function handelDelivary(payload) {
      address: ${payload.Address.city + payload.Address.state} }}`);
 }
 
-setInterval(() => {
+// setInterval(() => {
   let order = {
     customer: faker.name.findName(),
     Email: faker.internet.email(),
@@ -25,6 +25,6 @@ setInterval(() => {
     Phone: faker.helpers.createCard().phone,
   };
   event.emit("pickup", order);
-}, 5000); //5 seconds
+// }, 5000); //5 seconds
 
 module.exports = { handelDelivary };

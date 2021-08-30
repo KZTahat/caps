@@ -1,7 +1,7 @@
 "use strict";
 
 const event = require("../events.js");
-require('dotenv').config();
+require("dotenv").config();
 
 event.on("pickup", pickUpOrder);
 
@@ -12,7 +12,7 @@ function pickUpOrder(payload) {
      { store: ${process.env.SHOP_NAME},
        orderID: ${payload.Address.zipcode},
        customer: ${payload.customer},
-       address: ${payload.Address.city + payload.Address.state} }}`);
+       address: ${payload.Address.city + payload.Address.state}`);
   setTimeout(() => {
     event.emit("in-transit", payload);
   }, 1000);
@@ -21,3 +21,5 @@ function pickUpOrder(payload) {
     event.emit("delivered", payload);
   }, 3000);
 }
+
+module.exports = { pickUpOrder };

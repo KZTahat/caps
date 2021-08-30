@@ -4,7 +4,9 @@ require("dotenv").config();
 const faker = require("faker");
 const event = require("../events.js");
 
-event.on("delivered", (payload) => {
+event.on("delivered", handelDelivary);
+
+function handelDelivary(payload) {
   console.log(`VENDOR: Thank you for delivering  ${payload.Address.zipcode}`);
   console.log(`EVENT { event: 'delivered',
   time: 2020-03-06T18:27:20.736Z,
@@ -13,7 +15,7 @@ event.on("delivered", (payload) => {
      orderID: ${payload.Address.zipcode},
      customer: ${payload.customer},
      address: ${payload.Address.city + payload.Address.state} }}`);
-});
+}
 
 setInterval(() => {
   let order = {
@@ -24,3 +26,5 @@ setInterval(() => {
   };
   event.emit("pickup", order);
 }, 5000); //5 seconds
+
+module.exports = { handelDelivary };

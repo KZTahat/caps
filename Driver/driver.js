@@ -16,7 +16,7 @@ function pickUpOrder(payload) {
     console.log(`DRIVER: delivered up ${payload.orderId} 🤩`);
     capsNamespace.emit("delivered", payload);
   }, 3000);
-}
+} 
 
 
 module.exports = { pickUpOrder };
